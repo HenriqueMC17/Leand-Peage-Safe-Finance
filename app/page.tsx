@@ -1066,22 +1066,31 @@ export default function LandingPage() {
               <h4 className="text-sm font-bold">Produto</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/produto/funcionalidades"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Funcionalidades
                   </Link>
                 </li>
                 <li>
-                  <Link href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/produto/planos"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Planos
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/produto/integracoes"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Integrações
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href="/produto/api" className="text-muted-foreground hover:text-foreground transition-colors">
                     API
                   </Link>
                 </li>
@@ -1091,22 +1100,31 @@ export default function LandingPage() {
               <h4 className="text-sm font-bold">Recursos</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/recursos/documentacao"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Documentação
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/recursos/guias"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Guias
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href="/recursos/blog" className="text-muted-foreground hover:text-foreground transition-colors">
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/recursos/suporte"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Suporte
                   </Link>
                 </li>
@@ -1116,22 +1134,31 @@ export default function LandingPage() {
               <h4 className="text-sm font-bold">Empresa</h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="#about" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href="/empresa/sobre" className="text-muted-foreground hover:text-foreground transition-colors">
                     Sobre
                   </Link>
                 </li>
                 <li>
-                  <Link href="#team" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/empresa/equipe"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Equipe
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/empresa/politica-de-privacidade"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Política de Privacidade
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <Link
+                    href="/empresa/termos-de-servico"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     Termos de Serviço
                   </Link>
                 </li>
@@ -1143,13 +1170,22 @@ export default function LandingPage() {
               &copy; {new Date().getFullYear()} Safe Finance. Todos os direitos reservados.
             </p>
             <div className="flex gap-4">
-              <Link href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="/empresa/politica-de-privacidade"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Política de Privacidade
               </Link>
-              <Link href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="/empresa/termos-de-servico"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Termos de Serviço
               </Link>
-              <Link href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                href="/politica-de-cookies"
+                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Política de Cookies
               </Link>
             </div>
