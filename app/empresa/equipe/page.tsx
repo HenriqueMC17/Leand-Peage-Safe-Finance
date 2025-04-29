@@ -59,8 +59,8 @@ export default function EquipePage() {
                 name: "Henrique Monteiro Cardoso",
                 role: "Desenvolvedor de algoritmos, analista de requisitos",
                 image: "/placeholder.svg?height=300&width=300",
-                linkedin: "#",
-                email: "henrique@safefinance.com.br",
+                linkedin: "https://www.linkedin.com/in/henrique-monteiro-cardoso-ba3716229/",
+                email: "hmonteiro.hc@gmail.com",
                 bio: "Focado no desenvolvimento de algoritmos eficientes e análise detalhada de requisitos para garantir soluções precisas.",
               },
               {
@@ -141,7 +141,7 @@ export default function EquipePage() {
                     </Link>
                   </Button>
                   <Button asChild className="rounded-full">
-                    <Link href="https://www.instagram.com/facens" target="_blank" rel="noopener noreferrer">
+                    <Link href="https://www.instagram.com/instafacens/" target="_blank" rel="noopener noreferrer">
                       Seguir no Instagram
                     </Link>
                   </Button>
