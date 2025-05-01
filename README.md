@@ -29,4 +29,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues, sugerir 
 
 ---
 
-Feito com 💙 por FASE FINANCE
+Feito com 💙 por SAFE FINANCE
