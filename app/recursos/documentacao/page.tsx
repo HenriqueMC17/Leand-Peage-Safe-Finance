@@ -98,7 +98,7 @@ export default function DocumentacaoPage() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="#contato" className="text-muted-foreground hover:text-primary">
+                    <Link href="/contato" className="text-muted-foreground hover:text-primary">
                       Contato
                     </Link>
                   </li>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import Newsletter from "./newsletter"
 
 export default function BlogPage() {
   return (
@@ -58,7 +59,7 @@ export default function BlogPage() {
                   </div>
                 </div>
                 <Button asChild className="rounded-full">
-                  <Link href="#">Ler Artigo</Link>
+                  <Link href="/recursos/blog/orcamento-eficiente">Ler Artigo</Link>
                 </Button>
               </CardContent>
             </div>
@@ -137,7 +138,19 @@ export default function BlogPage() {
                   </div>
                 </div>
                 <Button asChild variant="outline" className="w-full rounded-full">
-                  <Link href="#">Ler Artigo</Link>
+                  <Link
+                    href={
+                      i === 0
+                        ? "/recursos/blog/habitos-financeiros"
+                        : i === 1
+                          ? "/recursos/blog/investimentos-iniciantes"
+                          : i === 2
+                            ? "/recursos/blog/sair-das-dividas"
+                            : "/recursos/blog/planejamento-familiar"
+                    }
+                  >
+                    Ler Artigo
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
@@ -173,20 +186,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter */}
-      <section className="bg-muted/30 rounded-lg p-8 text-center">
-        <h2 className="text-2xl font-semibold mb-4">Inscreva-se em nossa newsletter</h2>
-        <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-          Receba dicas financeiras, novos artigos e atualizações diretamente em seu email.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input
-            type="email"
-            placeholder="Seu email"
-            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          />
-          <Button className="rounded-full">Inscrever-se</Button>
-        </div>
-      </section>
+      <Newsletter />
     </div>
   )
 }

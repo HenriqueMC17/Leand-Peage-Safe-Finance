@@ -33,7 +33,7 @@ export default function SuportePage() {
               <span>Disponível agora</span>
             </div>
             <Button asChild className="w-full rounded-full">
-              <Link href="#">Iniciar Chat</Link>
+              <Link href="/agendar-demo">Iniciar Chat</Link>
             </Button>
           </CardContent>
         </Card>

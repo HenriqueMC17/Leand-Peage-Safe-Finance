@@ -4,32 +4,14 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import {
-  Check,
-  ChevronRight,
-  Menu,
-  X,
-  Moon,
-  Sun,
-  ArrowRight,
-  Star,
-  Wallet,
-  PieChart,
-  BarChart3,
-  Bell,
-  FileText,
-  Lock,
-  TrendingUp,
-  DollarSign,
-  Calendar,
-  History,
-} from "lucide-react"
+import { Check, ChevronRight, Menu, X, Moon, Sun, ArrowRight, Star, Wallet, PieChart, BarChart3, Bell, FileText, Lock, TrendingUp, DollarSign, Calendar, History } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useTheme } from "next-themes"
+import SearchButton from "./components/search-button"
 
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -169,19 +151,22 @@ export default function LandingPage() {
             </Link>
           </nav>
           <div className="hidden md:flex gap-4 items-center">
+            <SearchButton />
             <Button variant="ghost" size="icon" onClick={toggleTheme} className="rounded-full">
               {mounted && theme === "dark" ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" />}
               <span className="sr-only">Alternar tema</span>
             </Button>
             <Link
-              href="#"
+              href="/cliente"
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               Entrar
             </Link>
-            <Button className="rounded-full">
-              Começar Agora
-              <ChevronRight className="ml-1 size-4" />
+            <Button className="rounded-full" asChild>
+              <Link href="/cliente">
+                Começar Agora
+                <ChevronRight className="ml-1 size-4" />
+              </Link>
             </Button>
           </div>
           <div className="flex items-center gap-4 md:hidden">
@@ -219,12 +204,14 @@ export default function LandingPage() {
                 Planos
               </Link>
               <div className="flex flex-col gap-2 pt-2 border-t">
-                <Link href="#" className="py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/cliente" className="py-2 text-sm font-medium" onClick={() => setMobileMenuOpen(false)}>
                   Entrar
                 </Link>
-                <Button className="rounded-full">
-                  Começar Agora
-                  <ChevronRight className="ml-1 size-4" />
+                <Button className="rounded-full" asChild>
+                  <Link href="/cliente">
+                    Começar Agora
+                    <ChevronRight className="ml-1 size-4" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -259,8 +246,8 @@ export default function LandingPage() {
                   Começar Gratuitamente
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full h-12 px-8 text-base">
-                  Agendar Demonstração
+                <Button size="lg" variant="outline" className="rounded-full h-12 px-8 text-base" asChild>
+                  <Link href="/agendar-demo">Agendar Demonstração</Link>
                 </Button>
               </div>
               <div className="flex items-center justify-center gap-4 mt-6 text-sm text-muted-foreground">
@@ -565,6 +552,9 @@ export default function LandingPage() {
               <Link href="https://www.instagram.com/facens" className="text-primary hover:underline font-medium">
                 @facens
               </Link>
+              <Button asChild className="rounded-full">
+                <Link href="/carreiras">Ver Vagas Abertas</Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -981,8 +971,9 @@ export default function LandingPage() {
                   size="lg"
                   variant="outline"
                   className="rounded-full h-12 px-8 text-base bg-transparent border-white text-white hover:bg-white/10"
+                  asChild
                 >
-                  Agendar Demonstração
+                  <Link href="/agendar-demo">Agendar Demonstração</Link>
                 </Button>
               </div>
               <p className="text-sm text-primary-foreground/80 mt-4">

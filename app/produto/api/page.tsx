@@ -190,10 +190,10 @@ fetch('https://api.safefinance.com.br/v1/reports/monthly?year=2023&month=4', {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild className="rounded-full">
-              <Link href="/documentacao">Ver Documentação Completa</Link>
+              <Link href="/recursos/documentacao">Ver Documentação Completa</Link>
             </Button>
             <Button asChild variant="outline" className="rounded-full">
-              <Link href="/#pricing">Ver Planos</Link>
+              <Link href="/produto/planos">Ver Planos</Link>
             </Button>
           </div>
         </section>
