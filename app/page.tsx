@@ -503,7 +503,7 @@ export default function LandingPage() {
               {[
                 {
                   name: "Anthony Losano Miranda",
-                  role: "Desenvolvedor de sistemas, analista de suporte",
+                  role: "Desenvolvedor de sistemas, Analista de suporte",
                 },
                 {
                   name: "Gabriel Viana Krapp Guimarães",
@@ -515,7 +515,7 @@ export default function LandingPage() {
                 },
                 {
                   name: "Henrique Monteiro Cardoso",
-                  role: "Desenvolvedor de algoritmos, analista de requisitos",
+                  role: "Desenvolvedor de algoritmos, Analista de requisitos",
                 },
                 {
                   name: "Lucas Sodré Teixeira",
