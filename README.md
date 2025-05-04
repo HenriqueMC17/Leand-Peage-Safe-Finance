@@ -17,7 +17,7 @@ Seu design é pensado especialmente para atender públicos que **não possuem co
 
 Você pode acessar o **Safe Finance** diretamente através da plataforma **Leand Peage** pelo seguinte link:
 
-👉 [Acessar Safe Finance na Leand Peage](https://kzmleaye9lc578r4ocit.lite.vusercontent.net/)
+👉 [Acessar Safe Finance na Leand Peage](https://leandpeage.com/safe-finance)
 
 ## 💡 Objetivo
 

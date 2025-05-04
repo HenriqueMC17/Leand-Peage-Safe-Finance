@@ -4,26 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import {
-  Check,
-  ChevronRight,
-  Menu,
-  X,
-  Moon,
-  Sun,
-  ArrowRight,
-  Star,
-  Wallet,
-  PieChart,
-  BarChart3,
-  Bell,
-  FileText,
-  Lock,
-  TrendingUp,
-  DollarSign,
-  Calendar,
-  History,
-} from "lucide-react"
+import { Check, ChevronRight, Menu, X, Moon, Sun, ArrowRight, Star, Wallet, PieChart, BarChart3, Bell, FileText, Lock, TrendingUp, DollarSign, Calendar, History } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"

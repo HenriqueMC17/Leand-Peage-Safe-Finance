@@ -43,8 +43,6 @@ export default function PageLayout({
     }
   }, [preserveScrollPosition])
 
-  // Atualizar o manipulador de clique para considerar o novo domínio base
-
   const handleBackClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (preserveScrollPosition) {
       // Don't do anything special, let the browser handle it
@@ -54,8 +52,7 @@ export default function PageLayout({
     // If not preserving scroll, prevent default and handle navigation manually
     if (backUrl === "/") {
       e.preventDefault()
-      // Usar o caminho base correto para a página inicial
-      window.location.href = "/safe-finance/"
+      window.location.href = "/"
     }
   }
 
