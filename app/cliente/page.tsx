@@ -16,6 +16,55 @@ export default function ClienteLoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [activeTab, setActiveTab] = useState("login")
 
+  // Adicionar validação mais robusta para o formulário de registro
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  })
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    email: "",
+    password: "",
+  })
+
+  const validateForm = () => {
+    let isValid = true
+    const errors = {
+      name: "",
+      email: "",
+      password: "",
+    }
+
+    // Validar nome
+    if (!formData.name.trim()) {
+      errors.name = "Nome é obrigatório"
+      isValid = false
+    }
+
+    // Validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!formData.email.trim()) {
+      errors.email = "Email é obrigatório"
+      isValid = false
+    } else if (!emailRegex.test(formData.email)) {
+      errors.email = "Email inválido"
+      isValid = false
+    }
+
+    // Validar senha
+    if (!formData.password) {
+      errors.password = "Senha é obrigatória"
+      isValid = false
+    } else if (formData.password.length < 8) {
+      errors.password = "A senha deve ter pelo menos 8 caracteres"
+      isValid = false
+    }
+
+    setFormErrors(errors)
+    return isValid
+  }
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -29,6 +78,11 @@ export default function ClienteLoginPage() {
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!validateForm()) {
+      return
+    }
+
     setIsLoading(true)
 
     // Simulação de registro
@@ -132,11 +186,26 @@ export default function ClienteLoginPage() {
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="name">Nome Completo</Label>
-                      <Input id="name" placeholder="Seu nome" required />
+                      <Input
+                        id="name"
+                        placeholder="Seu nome"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      />
+                      {formErrors.name && <p className="text-red-500 text-sm">{formErrors.name}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="register-email">Email</Label>
-                      <Input id="register-email" placeholder="seu@email.com" type="email" required />
+                      <Input
+                        id="register-email"
+                        placeholder="seu@email.com"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      />
+                      {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="register-password">Senha</Label>
@@ -146,7 +215,10 @@ export default function ClienteLoginPage() {
                           type={showPassword ? "text" : "password"}
                           placeholder="••••••••"
                           required
+                          value={formData.password}
+                          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                         />
+                        {formErrors.password && <p className="text-red-500 text-sm">{formErrors.password}</p>}
                         <button
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}

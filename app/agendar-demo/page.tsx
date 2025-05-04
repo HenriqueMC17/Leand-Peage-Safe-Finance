@@ -24,6 +24,7 @@ export default function AgendarDemoPage() {
   const [time, setTime] = useState<string | undefined>(undefined)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -88,8 +89,23 @@ export default function AgendarDemoPage() {
                 <Input id="name" placeholder="Seu nome completo" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="seu@email.com" required />
+                <Label htmlFor="email" id="email-label">
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="seu@email.com"
+                  required
+                  aria-labelledby="email-label"
+                  aria-describedby="email-error"
+                  aria-invalid={!!error}
+                />
+                {error && (
+                  <p id="email-error" className="text-sm text-red-500" role="alert">
+                    {error}
+                  </p>
+                )}
               </div>
               <div className="space-y-2">
                 <Label htmlFor="phone">Telefone</Label>

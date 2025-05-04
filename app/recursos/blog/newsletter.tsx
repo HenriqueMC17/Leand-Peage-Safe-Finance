@@ -27,8 +27,18 @@ export default function Newsletter() {
 
     // Simulação de envio
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
+      try {
+        // Simulação de operação que pode falhar
+        if (Math.random() > 0.9) {
+          throw new Error("Falha na conexão com o servidor")
+        }
+
+        setIsSubmitting(false)
+        setIsSubmitted(true)
+      } catch (err) {
+        setIsSubmitting(false)
+        setError(err instanceof Error ? err.message : "Ocorreu um erro ao processar sua solicitação.")
+      }
     }, 1500)
   }
 

@@ -1,13 +1,16 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-
+// Organizar importações por grupos: React/Next, componentes UI, utilitários, tipos
 import { useEffect } from "react"
+import { useParams } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import { useParams } from "next/navigation"
+
 import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+
 import { ChevronLeft, Calendar, Clock, Share2, Bookmark, MessageSquare } from "lucide-react"
+
 import PageLayout from "@/app/components/page-layout"
 
 // Dados de exemplo para os artigos do blog

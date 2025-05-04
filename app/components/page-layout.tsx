@@ -15,6 +15,19 @@ interface PageLayoutProps {
   preserveScrollPosition?: boolean
 }
 
+/**
+ * PageLayout - Componente de layout padrão para páginas do site
+ *
+ * Este componente fornece uma estrutura consistente para todas as páginas,
+ * incluindo navegação de volta, título, descrição e controle de scroll.
+ *
+ * @param {React.ReactNode} children - Conteúdo da página
+ * @param {string} title - Título principal da página
+ * @param {string} description - Descrição opcional da página
+ * @param {string} backUrl - URL para o link de voltar (padrão: "/")
+ * @param {string} backLabel - Texto para o link de voltar (padrão: "Voltar para a página inicial")
+ * @param {boolean} preserveScrollPosition - Se verdadeiro, mantém a posição de scroll ao navegar de volta
+ */
 export default function PageLayout({
   children,
   title,
@@ -30,6 +43,8 @@ export default function PageLayout({
     }
   }, [preserveScrollPosition])
 
+  // Atualizar o manipulador de clique para considerar o novo domínio base
+
   const handleBackClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (preserveScrollPosition) {
       // Don't do anything special, let the browser handle it
@@ -39,7 +54,8 @@ export default function PageLayout({
     // If not preserving scroll, prevent default and handle navigation manually
     if (backUrl === "/") {
       e.preventDefault()
-      window.location.href = "/"
+      // Usar o caminho base correto para a página inicial
+      window.location.href = "/safe-finance/"
     }
   }
 

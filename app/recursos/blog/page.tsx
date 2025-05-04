@@ -37,6 +37,8 @@ export default function BlogPage() {
                 width={600}
                 height={400}
                 className="w-full h-64 md:h-full object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
             <div className="md:w-1/2">
@@ -164,18 +166,18 @@ export default function BlogPage() {
 
         <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
           {[
-            { name: "Educação Financeira", count: 24 },
-            { name: "Investimentos", count: 18 },
-            { name: "Dívidas", count: 12 },
-            { name: "Planejamento", count: 15 },
-            { name: "Economia", count: 9 },
-            { name: "Empreendedorismo", count: 7 },
-            { name: "Aposentadoria", count: 5 },
-            { name: "Impostos", count: 8 },
+            { name: "Educação Financeira", count: 24, slug: "educacao-financeira" },
+            { name: "Investimentos", count: 18, slug: "investimentos" },
+            { name: "Dívidas", count: 12, slug: "dividas" },
+            { name: "Planejamento", count: 15, slug: "planejamento" },
+            { name: "Economia", count: 9, slug: "economia" },
+            { name: "Empreendedorismo", count: 7, slug: "empreendedorismo" },
+            { name: "Aposentadoria", count: 5, slug: "aposentadoria" },
+            { name: "Impostos", count: 8, slug: "impostos" },
           ].map((category, i) => (
             <Link
               key={i}
-              href="#"
+              href={`/recursos/blog?categoria=${category.slug}`}
               className="p-4 bg-muted/30 rounded-lg text-center hover:bg-muted/50 transition-colors"
             >
               <h3 className="font-medium mb-1">{category.name}</h3>

@@ -39,6 +39,10 @@ import {
   LogOut,
 } from "lucide-react"
 
+// Importar componente de virtualização
+import { useVirtualizer } from "@tanstack/react-virtual"
+import { useRef } from "react"
+
 // Dados de exemplo
 const balanceData = [
   { name: "Jan", receitas: 4000, despesas: 2400 },
@@ -103,6 +107,15 @@ const transactionData = [
 
 export default function DashboardDemo() {
   const [activeTab, setActiveTab] = useState("visao-geral")
+
+  // Modificar a seção de transações para usar virtualização
+  const parentRef = useRef<HTMLDivElement>(null)
+
+  const rowVirtualizer = useVirtualizer({
+    count: transactionData.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 80,
+  })
 
   return (
     <div className="flex min-h-screen bg-muted/30">
@@ -212,7 +225,7 @@ export default function DashboardDemo() {
         </div>
 
         {/* Cards */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-8">
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
@@ -279,13 +292,13 @@ export default function DashboardDemo() {
             <TabsTrigger value="categorias">Categorias</TabsTrigger>
           </TabsList>
           <TabsContent value="visao-geral">
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
               <Card>
-                <CardHeader>
-                  <CardTitle>Balanço Mensal</CardTitle>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Balanço Mensal</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-80">
+                  <div className="h-[300px] sm:h-[400px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={balanceData}>
                         <CartesianGrid strokeDasharray="3 3" />
@@ -328,35 +341,54 @@ export default function DashboardDemo() {
                 <CardTitle>Transações Recentes</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {transactionData.map((transaction) => (
-                    <div key={transaction.id} className="flex items-center justify-between p-4 border rounded-lg">
-                      <div className="flex items-center gap-4">
+                {/* Na renderização da lista de transações */}
+                <div ref={parentRef} className="max-h-[400px] overflow-auto">
+                  <div
+                    style={{
+                      height: `${rowVirtualizer.getTotalSize()}px`,
+                      width: "100%",
+                      position: "relative",
+                    }}
+                  >
+                    {rowVirtualizer.getVirtualItems().map((virtualRow) => {
+                      const transaction = transactionData[virtualRow.index]
+                      return (
                         <div
-                          className={`size-10 rounded-full flex items-center justify-center ${
-                            transaction.type === "receita" ? "bg-green-500/10" : "bg-red-500/10"
-                          }`}
+                          key={transaction.id}
+                          className="flex items-center justify-between p-4 border rounded-lg absolute top-0 left-0 w-full"
+                          style={{
+                            height: `${virtualRow.size}px`,
+                            transform: `translateY(${virtualRow.start}px)`,
+                          }}
                         >
-                          {transaction.type === "receita" ? (
-                            <ArrowUpRight className={`size-5 text-green-500`} />
-                          ) : (
-                            <ArrowDownRight className={`size-5 text-red-500`} />
-                          )}
-                        </div>
-                        <div>
-                          <p className="font-medium">{transaction.description}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {transaction.date} • {transaction.category}
+                          <div className="flex items-center gap-4">
+                            <div
+                              className={`size-10 rounded-full flex items-center justify-center ${
+                                transaction.type === "receita" ? "bg-green-500/10" : "bg-red-500/10"
+                              }`}
+                            >
+                              {transaction.type === "receita" ? (
+                                <ArrowUpRight className={`size-5 text-green-500`} />
+                              ) : (
+                                <ArrowDownRight className={`size-5 text-red-500`} />
+                              )}
+                            </div>
+                            <div>
+                              <p className="font-medium">{transaction.description}</p>
+                              <p className="text-sm text-muted-foreground">
+                                {transaction.date} • {transaction.category}
+                              </p>
+                            </div>
+                          </div>
+                          <p
+                            className={`font-medium ${transaction.type === "receita" ? "text-green-500" : "text-red-500"}`}
+                          >
+                            {transaction.type === "receita" ? "+" : "-"}R$ {transaction.amount.toFixed(2)}
                           </p>
                         </div>
-                      </div>
-                      <p
-                        className={`font-medium ${transaction.type === "receita" ? "text-green-500" : "text-red-500"}`}
-                      >
-                        {transaction.type === "receita" ? "+" : "-"}R$ {transaction.amount.toFixed(2)}
-                      </p>
-                    </div>
-                  ))}
+                      )
+                    })}
+                  </div>
                 </div>
                 <div className="mt-6 text-center">
                   <Button variant="outline" className="rounded-full">
