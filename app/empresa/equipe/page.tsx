@@ -34,49 +34,49 @@ export default function EquipePage() {
               {
                 name: "Anthony Losano Miranda",
                 role: "Desenvolvedor de Sistemas, Analista de Suporte",
-                image: "/placeholder.svg?height=300&width=300",
+                image: "https://media.licdn.com/dms/image/v2/D4E03AQFllsoPru8mcw/profile-displayphoto-shrink_200_200/B4EZUg5HVSHgAY-/0/1740013639147?e=1753920000&v=beta&t=_oDOuhLw4fRwzhu5_kQ-DXFGNAYMvkoQC55ypiR05HI",
                 linkedin: "https://www.linkedin.com/in/anthonylosanomiranda/",
-                email: "anthony@safefinance.com.br",
+                email: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJZZPzNppSTTvgljbZTCGtNJxmcpdSnQtkvQmgMVFFHWzzPBbpMpdDNTJHMJNgZlWntnCJV",
                 bio: "Especialista em desenvolvimento de sistemas e suporte técnico, com foco em criar soluções robustas e de fácil manutenção.",
               },
               {
                 name: "Gabriel Viana Krapp Guimarães",
                 role: "Product Owner, Analista de Viabilidade",
-                image: "/placeholder.svg?height=300&width=300",
-                linkedin: "#",
-                email: "gabriel@safefinance.com.br",
+                image: "https://media.licdn.com/dms/image/v2/D4D03AQGgsTMEO53W8Q/profile-displayphoto-shrink_200_200/B4DZZ831VLGwAY-/0/1745851734859?e=1753920000&v=beta&t=G4qojigBId1raWIaD4ShLmjKLocEUkypfgZoyAvmExo",
+                linkedin: "https://www.linkedin.com/in/gabriel-krapp9001/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+                email: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWrRnXvZMXFmVSxdzPVjzMZhsglxzrClfrbjXpRbQvRJMrbfRFxQLjchqHDkkNQVdGXLqkbvv",
                 bio: "Responsável pela visão do produto e análise de viabilidade, garantindo que a Safe Finance atenda às necessidades reais dos usuários.",
               },
               {
                 name: "Gustavo de Matos Passarelli",
                 role: "Scrum master, Gestor de projetos",
-                image: "/placeholder.svg?height=300&width=300",
+                image: "https://media.licdn.com/dms/image/v2/D4E03AQHV8HWK0FZw3w/profile-displayphoto-shrink_200_200/B4EZWF7wcLH0AY-/0/1741708790580?e=1753920000&v=beta&t=7E243CTg9-dLn6tfvZCeETigetiJfj2NDTFny-L2Ffw",
                 linkedin: "https://www.linkedin.com/in/gustavo-passarelli/",
-                email: "gustavo@safefinance.com.br",
+                email: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJZWxknhNwMFCMVgPbvwnChWpBnBdvmwqPfBZMGsJBlRQdhVkHSmLWHrzlLSxNsMPTtDdxq",
                 bio: "Especialista em metodologias ágeis e gestão de projetos, garantindo a entrega eficiente e de alta qualidade.",
               },
               {
                 name: "Henrique Monteiro Cardoso",
                 role: "Desenvolvedor de Algoritmos, Analista de Requisitos",
-                image: "/placeholder.svg?height=300&width=300",
+                image: "https://media.licdn.com/dms/image/v2/D4D03AQFKZkX8KAg7eA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1719774970076?e=1753920000&v=beta&t=-rUc6PMJ9lPgnuHfx2MFWeGYIMuuVWBN_dwZhpC7piw",
                 linkedin: "https://www.linkedin.com/in/henrique-monteiro-cardoso-ba3716229/",
-                email: "hmonteiro.hc@gmail.com",
+                email: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCHrlFZDxQKCqdMzNzDCnshRGNVmWBWLSxCwQSswbGlwtmZxqqzgjVjTFDCRgPpTrNSfxwCL",
                 bio: "Focado no desenvolvimento de algoritmos eficientes e análise detalhada de requisitos para garantir soluções precisas.",
               },
               {
                 name: "Lucas Sodré Teixeira",
                 role: "Consultor de Usabilidade",
-                image: "/placeholder.svg?height=300&width=300",
+                image: "https://media.licdn.com/dms/image/v2/D4D03AQGzMUi_JGOuKQ/profile-displayphoto-shrink_200_200/B4DZUgzorCHkAY-/0/1740012164343?e=1753920000&v=beta&t=N1SwExvimrRmzGt1InorcG9wIx77w65tBAadTE_IqWw",
                 linkedin: "https://www.linkedin.com/in/lucasantoniosodre/",
-                email: "lucas@safefinance.com.br",
+                email: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWtMqhRHqDxxDvwRjHkDBNPwFSQwrjNNWhmFWGPGbgZHzgbLkRflJTJjSTHvGRWspmxdZvdcV",
                 bio: "Especialista em experiência do usuário, trabalhando para tornar a Safe Finance intuitiva e acessível para todos os públicos.",
               },
               {
                 name: "Murilo Henrique Araujo Elias Fernandez",
                 role: "Desenvolvedor de Sistemas, Arquitetura de Sistemas",
-                image: "/placeholder.svg?height=300&width=300",
+                image: "https://media.licdn.com/dms/image/v2/D4D03AQEanXSsHTtsJQ/profile-displayphoto-shrink_200_200/B4DZcI7UKwIEAY-/0/1748201457413?e=1753920000&v=beta&t=Slj74aFIj2s7u3hM0PqOlt3VB59cmWspfi9bVI05QfQ",
                 linkedin: "https://www.linkedin.com/in/murilo-henrique-araujo-elias-fernandez-20b099283/",
-                email: "murilo@safefinance.com.br",
+                email: "https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJqbQjFKlmTKMBCkHkBlTfMPdVbpSQFWHngkgwdfbVhqjkMtwGfkLVCkPFxqCmTgdxShsqB",
                 bio: "Responsável pela arquitetura de sistemas e desenvolvimento, garantindo uma base sólida e escalável para a plataforma.",
               },
             ].map((member, i) => (
@@ -119,7 +119,7 @@ export default function EquipePage() {
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="md:w-1/3">
                 <Image
-                  src="/placeholder.svg?height=200&width=200"
+                  src="https://jorplast.com.br/wp-content/uploads/2020/08/facens-logo-quadrado.jpg"
                   alt="Logo Facens"
                   width={200}
                   height={200}
@@ -174,7 +174,7 @@ export default function EquipePage() {
 
             <div className="rounded-xl overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="https://cdn.gamma.app/33klz2ifj6dnjv0/generated-images/8Ets8m23eBfKLOqttW0kx.png"
                 alt="Equipe trabalhando"
                 width={400}
                 height={300}

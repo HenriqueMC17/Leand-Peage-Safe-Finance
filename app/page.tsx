@@ -319,7 +319,7 @@ export default function LandingPage() {
               >
                 <div className="rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src="/placeholder.svg?height=600&width=800"
+                    src="https://cdn.gamma.app/33klz2ifj6dnjv0/3b418702f4104c62be18926660efa238/original/20250525_1443_Logo-Profissional-Financeiro_remix_01jw48ms9cen8bgmmaztkg6y5m.png"
                     width={800}
                     height={600}
                     alt="Safe Finance app interface"
