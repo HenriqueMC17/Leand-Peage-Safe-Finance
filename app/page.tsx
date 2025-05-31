@@ -274,7 +274,7 @@ export default function LandingPage() {
             >
               <div className="rounded-xl overflow-hidden shadow-2xl border border-border/40 bg-gradient-to-b from-background to-muted/20">
                 <Image
-                  src="/placeholder.svg?height=720&width=1280"
+                  src="https://cdn.gamma.app/33klz2ifj6dnjv0/c63b955f50464134b5c3d1098edc7e13/original/Foto-da-Equipe.jpg"
                   width={1280}
                   height={720}
                   alt="Safe Finance dashboard"

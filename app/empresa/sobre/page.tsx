@@ -17,7 +17,7 @@ export default function SobrePage() {
         <section>
           <div className="rounded-xl overflow-hidden mb-8">
             <Image
-              src="/placeholder.svg?height=400&width=800"
+              src="https://cdn.gamma.app/33klz2ifj6dnjv0/3b418702f4104c62be18926660efa238/original/20250525_1443_Logo-Profissional-Financeiro_remix_01jw48ms9cen8bgmmaztkg6y5m.png"
               alt="Equipe Safe Finance"
               width={800}
               height={400}
@@ -87,7 +87,7 @@ export default function SobrePage() {
 
             <div className="rounded-xl overflow-hidden">
               <Image
-                src="/placeholder.svg?height=300&width=400"
+                src="https://cdn.gamma.app/33klz2ifj6dnjv0/c63b955f50464134b5c3d1098edc7e13/original/Foto-da-Equipe.jpg"
                 alt="História da Safe Finance"
                 width={400}
                 height={300}
