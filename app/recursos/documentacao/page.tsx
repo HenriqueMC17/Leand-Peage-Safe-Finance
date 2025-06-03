@@ -1,9 +1,22 @@
+"use client"
+
+import type React from "react"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, Search } from "lucide-react"
+import { ChevronLeft, Search, Code, Database, Shield, HelpCircle } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { useState } from "react"
 
 export default function DocumentacaoPage() {
+  const [searchTerm, setSearchTerm] = useState("")
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Implementar busca na documentação
+    console.log("Buscando por:", searchTerm)
+  }
+
   return (
     <div className="container py-12 md:py-20">
       <Link href="/" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8">
@@ -15,29 +28,35 @@ export default function DocumentacaoPage() {
         {/* Sidebar */}
         <div className="md:w-64 flex-shrink-0">
           <div className="sticky top-20">
-            <div className="relative mb-6">
+            <form onSubmit={handleSearch} className="relative mb-6">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input type="search" placeholder="Buscar na documentação..." className="w-full pl-9 rounded-md" />
-            </div>
+              <Input
+                type="search"
+                placeholder="Buscar na documentação..."
+                className="w-full pl-9 rounded-md"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </form>
 
             <nav className="space-y-6">
               <div>
                 <h3 className="font-medium mb-2">Introdução</h3>
                 <ul className="space-y-1 text-sm">
                   <li>
-                    <Link href="#primeiros-passos" className="text-muted-foreground hover:text-primary">
+                    <a href="#primeiros-passos" className="text-muted-foreground hover:text-primary block py-1">
                       Primeiros Passos
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="#instalacao" className="text-muted-foreground hover:text-primary">
+                    <a href="#instalacao" className="text-muted-foreground hover:text-primary block py-1">
                       Instalação
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="#requisitos" className="text-muted-foreground hover:text-primary">
+                    <a href="#requisitos" className="text-muted-foreground hover:text-primary block py-1">
                       Requisitos do Sistema
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -46,24 +65,24 @@ export default function DocumentacaoPage() {
                 <h3 className="font-medium mb-2">Funcionalidades</h3>
                 <ul className="space-y-1 text-sm">
                   <li>
-                    <Link href="#transacoes" className="text-muted-foreground hover:text-primary">
+                    <a href="#transacoes" className="text-muted-foreground hover:text-primary block py-1">
                       Cadastro de Transações
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="#categorias" className="text-muted-foreground hover:text-primary">
+                    <a href="#categorias" className="text-muted-foreground hover:text-primary block py-1">
                       Categorias
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="#orcamentos" className="text-muted-foreground hover:text-primary">
+                    <a href="#orcamentos" className="text-muted-foreground hover:text-primary block py-1">
                       Orçamentos
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="#relatorios" className="text-muted-foreground hover:text-primary">
+                    <a href="#relatorios" className="text-muted-foreground hover:text-primary block py-1">
                       Relatórios
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -72,19 +91,19 @@ export default function DocumentacaoPage() {
                 <h3 className="font-medium mb-2">API</h3>
                 <ul className="space-y-1 text-sm">
                   <li>
-                    <Link href="#autenticacao" className="text-muted-foreground hover:text-primary">
+                    <a href="#autenticacao" className="text-muted-foreground hover:text-primary block py-1">
                       Autenticação
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="#endpoints" className="text-muted-foreground hover:text-primary">
+                    <a href="#endpoints" className="text-muted-foreground hover:text-primary block py-1">
                       Endpoints
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="#exemplos" className="text-muted-foreground hover:text-primary">
+                    <a href="#exemplos" className="text-muted-foreground hover:text-primary block py-1">
                       Exemplos
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -93,12 +112,12 @@ export default function DocumentacaoPage() {
                 <h3 className="font-medium mb-2">Suporte</h3>
                 <ul className="space-y-1 text-sm">
                   <li>
-                    <Link href="#faq" className="text-muted-foreground hover:text-primary">
+                    <a href="#faq" className="text-muted-foreground hover:text-primary block py-1">
                       FAQ
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link href="/contato" className="text-muted-foreground hover:text-primary">
+                    <Link href="/contato" className="text-muted-foreground hover:text-primary block py-1">
                       Contato
                     </Link>
                   </li>
@@ -116,7 +135,8 @@ export default function DocumentacaoPage() {
             usar nossa plataforma e aproveitar ao máximo todas as funcionalidades.
           </p>
 
-          <section id="primeiros-passos" className="mb-12">
+          {/* Introdução */}
+          <section id="primeiros-passos" className="mb-16">
             <h2 className="text-2xl font-semibold mb-4">Primeiros Passos</h2>
             <p className="text-muted-foreground mb-4">
               A Safe Finance é uma plataforma completa para gestão financeira pessoal e empresarial. Com ela, você pode
@@ -136,7 +156,7 @@ export default function DocumentacaoPage() {
             </div>
           </section>
 
-          <section id="instalacao" className="mb-12">
+          <section id="instalacao" className="mb-16">
             <h2 className="text-2xl font-semibold mb-4">Instalação</h2>
             <p className="text-muted-foreground mb-4">
               A Safe Finance é uma plataforma baseada em nuvem, o que significa que não é necessário instalar nenhum
@@ -168,7 +188,7 @@ export default function DocumentacaoPage() {
             </div>
           </section>
 
-          <section id="requisitos" className="mb-12">
+          <section id="requisitos" className="mb-16">
             <h2 className="text-2xl font-semibold mb-4">Requisitos do Sistema</h2>
             <p className="text-muted-foreground mb-4">
               A Safe Finance é compatível com a maioria dos navegadores modernos e dispositivos. Para a melhor
@@ -188,14 +208,295 @@ export default function DocumentacaoPage() {
             </p>
           </section>
 
+          {/* Funcionalidades */}
+          <section id="transacoes" className="mb-16">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+              <Database className="mr-2 h-6 w-6" />
+              Cadastro de Transações
+            </h2>
+            <p className="text-muted-foreground mb-4">
+              O cadastro de transações é o coração da Safe Finance. Aqui você pode registrar todas as suas receitas e
+              despesas de forma simples e organizada.
+            </p>
+
+            <div className="space-y-4 mb-6">
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Tipos de Transação</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>
+                    • <strong>Receitas:</strong> Salários, vendas, investimentos, etc.
+                  </li>
+                  <li>
+                    • <strong>Despesas:</strong> Compras, contas, impostos, etc.
+                  </li>
+                  <li>
+                    • <strong>Transferências:</strong> Entre contas próprias
+                  </li>
+                </ul>
+              </div>
+
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Campos Obrigatórios</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Descrição da transação</li>
+                  <li>• Valor</li>
+                  <li>• Data</li>
+                  <li>• Categoria</li>
+                  <li>• Conta de origem/destino</li>
+                </ul>
+              </div>
+            </div>
+
+            <Button asChild className="rounded-full">
+              <Link href="/demo">Ver Exemplo Prático</Link>
+            </Button>
+          </section>
+
+          <section id="categorias" className="mb-16">
+            <h2 className="text-2xl font-semibold mb-4">Categorias</h2>
+            <p className="text-muted-foreground mb-4">
+              As categorias ajudam você a organizar e analisar seus gastos. A Safe Finance oferece categorias
+              pré-definidas e permite criar categorias personalizadas.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Categorias de Receita</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Salário</li>
+                  <li>• Freelance</li>
+                  <li>• Investimentos</li>
+                  <li>• Vendas</li>
+                  <li>• Outras receitas</li>
+                </ul>
+              </div>
+
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Categorias de Despesa</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Alimentação</li>
+                  <li>• Transporte</li>
+                  <li>• Moradia</li>
+                  <li>• Saúde</li>
+                  <li>• Educação</li>
+                  <li>• Lazer</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="orcamentos" className="mb-16">
+            <h2 className="text-2xl font-semibold mb-4">Orçamentos</h2>
+            <p className="text-muted-foreground mb-4">
+              Defina metas de gastos por categoria e acompanhe seu progresso em tempo real. Os orçamentos ajudam você a
+              manter o controle financeiro e alcançar seus objetivos.
+            </p>
+
+            <div className="p-4 bg-muted/30 rounded-lg mb-6">
+              <h3 className="font-medium mb-2">Como Funciona</h3>
+              <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
+                <li>Defina um valor limite para cada categoria</li>
+                <li>Escolha o período (mensal, trimestral, anual)</li>
+                <li>Acompanhe o progresso através de gráficos</li>
+                <li>Receba alertas quando se aproximar do limite</li>
+              </ol>
+            </div>
+          </section>
+
+          <section id="relatorios" className="mb-16">
+            <h2 className="text-2xl font-semibold mb-4">Relatórios</h2>
+            <p className="text-muted-foreground mb-4">
+              Visualize sua situação financeira através de relatórios detalhados e gráficos interativos.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <div className="p-4 bg-muted/30 rounded-lg text-center">
+                <h3 className="font-medium mb-2">Fluxo de Caixa</h3>
+                <p className="text-sm text-muted-foreground">Entradas vs Saídas</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg text-center">
+                <h3 className="font-medium mb-2">Gastos por Categoria</h3>
+                <p className="text-sm text-muted-foreground">Análise detalhada</p>
+              </div>
+              <div className="p-4 bg-muted/30 rounded-lg text-center">
+                <h3 className="font-medium mb-2">Evolução Patrimonial</h3>
+                <p className="text-sm text-muted-foreground">Crescimento ao longo do tempo</p>
+              </div>
+            </div>
+          </section>
+
+          {/* API */}
+          <section id="autenticacao" className="mb-16">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+              <Shield className="mr-2 h-6 w-6" />
+              Autenticação
+            </h2>
+            <p className="text-muted-foreground mb-4">
+              A API da Safe Finance utiliza autenticação via token JWT para garantir a segurança dos seus dados.
+            </p>
+
+            <div className="p-4 bg-muted/30 rounded-lg mb-6">
+              <h3 className="font-medium mb-2">Obtendo o Token</h3>
+              <pre className="text-sm bg-black text-green-400 p-3 rounded mt-2 overflow-x-auto">
+                {`POST /api/auth/login
+{
+  "email": "seu@email.com",
+  "password": "suasenha"
+}
+
+Response:
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expires_in": 3600
+}`}
+              </pre>
+            </div>
+          </section>
+
+          <section id="endpoints" className="mb-16">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+              <Code className="mr-2 h-6 w-6" />
+              Endpoints
+            </h2>
+            <p className="text-muted-foreground mb-4">Principais endpoints disponíveis na API da Safe Finance:</p>
+
+            <div className="space-y-4">
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Transações</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>
+                    • <code>GET /api/transactions</code> - Listar transações
+                  </li>
+                  <li>
+                    • <code>POST /api/transactions</code> - Criar transação
+                  </li>
+                  <li>
+                    • <code>PUT /api/transactions/:id</code> - Atualizar transação
+                  </li>
+                  <li>
+                    • <code>DELETE /api/transactions/:id</code> - Excluir transação
+                  </li>
+                </ul>
+              </div>
+
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Categorias</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>
+                    • <code>GET /api/categories</code> - Listar categorias
+                  </li>
+                  <li>
+                    • <code>POST /api/categories</code> - Criar categoria
+                  </li>
+                </ul>
+              </div>
+
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Relatórios</h3>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>
+                    • <code>GET /api/reports/summary</code> - Resumo financeiro
+                  </li>
+                  <li>
+                    • <code>GET /api/reports/cashflow</code> - Fluxo de caixa
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section id="exemplos" className="mb-16">
+            <h2 className="text-2xl font-semibold mb-4">Exemplos</h2>
+            <p className="text-muted-foreground mb-4">Exemplos práticos de como usar a API:</p>
+
+            <div className="p-4 bg-muted/30 rounded-lg mb-6">
+              <h3 className="font-medium mb-2">Criar uma Transação</h3>
+              <pre className="text-sm bg-black text-green-400 p-3 rounded mt-2 overflow-x-auto">
+                {`POST /api/transactions
+Authorization: Bearer seu_token_jwt
+
+{
+  "description": "Compra no supermercado",
+  "amount": -150.00,
+  "date": "2024-01-15",
+  "category_id": 1,
+  "account_id": 1
+}
+
+Response:
+{
+  "id": 123,
+  "description": "Compra no supermercado",
+  "amount": -150.00,
+  "date": "2024-01-15",
+  "created_at": "2024-01-15T10:30:00Z"
+}`}
+              </pre>
+            </div>
+          </section>
+
+          {/* Suporte */}
+          <section id="faq" className="mb-16">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+              <HelpCircle className="mr-2 h-6 w-6" />
+              FAQ - Perguntas Frequentes
+            </h2>
+
+            <div className="space-y-6">
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Como importar dados do meu banco?</h3>
+                <p className="text-sm text-muted-foreground">
+                  Você pode importar dados através de arquivos OFX, CSV ou conectando diretamente com seu banco através
+                  da nossa integração Open Banking.
+                </p>
+              </div>
+
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Meus dados estão seguros?</h3>
+                <p className="text-sm text-muted-foreground">
+                  Sim! Utilizamos criptografia de ponta a ponta e seguimos os mais altos padrões de segurança da
+                  indústria. Seus dados bancários nunca são armazenados em nossos servidores.
+                </p>
+              </div>
+
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Posso usar em múltiplos dispositivos?</h3>
+                <p className="text-sm text-muted-foreground">
+                  Sim! Sua conta sincroniza automaticamente entre todos os seus dispositivos - web, iOS e Android.
+                </p>
+              </div>
+
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Como cancelar minha assinatura?</h3>
+                <p className="text-sm text-muted-foreground">
+                  Você pode cancelar a qualquer momento através das configurações da sua conta. Não há taxas de
+                  cancelamento.
+                </p>
+              </div>
+
+              <div className="p-4 bg-muted/30 rounded-lg">
+                <h3 className="font-medium mb-2">Existe suporte técnico?</h3>
+                <p className="text-sm text-muted-foreground">
+                  Sim! Oferecemos suporte via chat, email e telefone. Usuários premium têm acesso a suporte prioritário
+                  24/7.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <div className="text-center mt-16 p-6 bg-muted/30 rounded-lg">
             <h3 className="text-xl font-semibold mb-4">Não encontrou o que procurava?</h3>
             <p className="text-muted-foreground mb-6">
               Nossa equipe de suporte está pronta para ajudar com qualquer dúvida que você possa ter.
             </p>
-            <Button asChild className="rounded-full">
-              <Link href="/contato">Entrar em Contato</Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild className="rounded-full">
+                <Link href="/contato">Entrar em Contato</Link>
+              </Button>
+              <Button asChild variant="outline" className="rounded-full">
+                <Link href="/recursos/suporte">Central de Ajuda</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
