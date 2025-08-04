@@ -4,7 +4,26 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Check, ChevronRight, Menu, X, Moon, Sun, ArrowRight, Star, Wallet, PieChart, BarChart3, Bell, FileText, Lock, TrendingUp, DollarSign, Calendar, History } from 'lucide-react'
+import {
+  Check,
+  ChevronRight,
+  Menu,
+  X,
+  Moon,
+  Sun,
+  ArrowRight,
+  Star,
+  Wallet,
+  PieChart,
+  BarChart3,
+  Bell,
+  FileText,
+  Lock,
+  TrendingUp,
+  DollarSign,
+  Calendar,
+  History,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
@@ -12,12 +31,18 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useTheme } from "next-themes"
 import SearchButton from "./components/search-button"
+import UserTypeSelector from "./components/user-type-selector"
+import PersonalizedContent from "./components/personalized-content"
+import FinancialQuiz from "./components/financial-quiz"
+import PublicRoadmap from "./components/public-roadmap"
+import MicroCTA from "./components/micro-cta"
 
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [userType, setUserType] = useState<string>("individual")
 
   useEffect(() => {
     setMounted(true)
@@ -246,7 +271,7 @@ export default function LandingPage() {
                   Começar Gratuitamente
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full h-12 px-8 text-base" asChild>
+                <Button size="lg" variant="outline" className="rounded-full h-12 px-8 text-base bg-transparent" asChild>
                   <Link href="/agendar-demo">Agendar Demonstração</Link>
                 </Button>
               </div>
@@ -354,7 +379,23 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* User Type Selection */}
+        <section className="w-full py-12 md:py-20 bg-muted/30">
+          <div className="container px-4 md:px-6">
+            <UserTypeSelector onTypeSelect={setUserType} />
+          </div>
+        </section>
+
+        {/* Personalized Content */}
+        <section className="w-full py-12 md:py-20">
+          <div className="container px-4 md:px-6">
+            <PersonalizedContent userType={userType} />
+          </div>
+        </section>
+
+        <MicroCTA type="test" />
+
+        {/* Features Section - manter a seção original */}
         <section id="features" className="w-full py-20 md:py-32">
           <div className="container px-4 md:px-6">
             <motion.div
@@ -656,6 +697,39 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+
+        {/* Financial Quiz */}
+        <section className="w-full py-20 md:py-32">
+          <div className="container px-4 md:px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
+            >
+              <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
+                Teste seus conhecimentos
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Quiz de Educação Financeira</h2>
+              <p className="max-w-[800px] text-muted-foreground md:text-lg">
+                Teste seus conhecimentos sobre finanças pessoais e descubra áreas para melhorar.
+              </p>
+            </motion.div>
+            <FinancialQuiz />
+          </div>
+        </section>
+
+        <MicroCTA type="demo" />
+
+        {/* Public Roadmap */}
+        <section className="w-full py-20 md:py-32 bg-muted/30">
+          <div className="container px-4 md:px-6">
+            <PublicRoadmap />
+          </div>
+        </section>
+
+        <MicroCTA type="compare" />
 
         {/* Pricing Section */}
         <section id="pricing" className="w-full py-20 md:py-32 relative overflow-hidden">
