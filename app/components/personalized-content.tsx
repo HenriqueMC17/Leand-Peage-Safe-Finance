@@ -1,127 +1,159 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import { PiggyBank, TrendingUp, Shield, Users, Home, Baby, Calculator, FileText, BarChart3 } from "lucide-react"
 
 interface PersonalizedContentProps {
-  userType?: string
+  userType: string
 }
 
 export default function PersonalizedContent({ userType }: PersonalizedContentProps) {
-  const [currentType, setCurrentType] = useState<string>("individual")
+  const getContent = () => {
+    switch (userType) {
+      case "individual":
+        return {
+          title: "Finanças Pessoais Simplificadas",
+          description: "Controle total sobre seu dinheiro com ferramentas pensadas para você",
+          features: [
+            {
+              icon: <PiggyBank className="size-5" />,
+              title: "Controle de Gastos Pessoais",
+              description: "Acompanhe onde cada real é gasto e identifique oportunidades de economia",
+            },
+            {
+              icon: <TrendingUp className="size-5" />,
+              title: "Metas Financeiras",
+              description: "Defina e acompanhe suas metas: viagem, casa própria, reserva de emergência",
+            },
+            {
+              icon: <Shield className="size-5" />,
+              title: "Reserva de Emergência",
+              description: "Calcule e construa sua reserva ideal para imprevistos",
+            },
+          ],
+          cta: "Comece sua jornada financeira",
+          testimonial: {
+            text: "Consegui economizar R$ 2.000 em 3 meses só organizando meus gastos!",
+            author: "Maria Silva, 28 anos",
+          },
+        }
 
-  useEffect(() => {
-    if (userType) {
-      setCurrentType(userType)
-    } else {
-      const savedType = localStorage.getItem("user-type")
-      if (savedType) {
-        setCurrentType(savedType)
-      }
+      case "family":
+        return {
+          title: "Orçamento Familiar Inteligente",
+          description: "Gerencie as finanças de toda a família com transparência e eficiência",
+          features: [
+            {
+              icon: <Users className="size-5" />,
+              title: "Orçamento Compartilhado",
+              description: "Todos da família podem acompanhar e contribuir com o orçamento",
+            },
+            {
+              icon: <Home className="size-5" />,
+              title: "Gastos da Casa",
+              description: "Controle despesas fixas: aluguel, contas, mercado e educação",
+            },
+            {
+              icon: <Baby className="size-5" />,
+              title: "Planejamento Familiar",
+              description: "Planeje gastos com filhos, educação e momentos especiais",
+            },
+          ],
+          cta: "Organize a família financeiramente",
+          testimonial: {
+            text: "Nossa família conseguiu economizar 30% nas despesas mensais!",
+            author: "João e Ana Santos, casal com 2 filhos",
+          },
+        }
+
+      case "business":
+        return {
+          title: "Gestão Financeira Empresarial",
+          description: "Ferramentas profissionais para MEIs e pequenas empresas crescerem",
+          features: [
+            {
+              icon: <Calculator className="size-5" />,
+              title: "Fluxo de Caixa",
+              description: "Controle entradas e saídas para manter o negócio sempre no azul",
+            },
+            {
+              icon: <FileText className="size-5" />,
+              title: "Relatórios Fiscais",
+              description: "Relatórios prontos para contador e declaração de impostos",
+            },
+            {
+              icon: <BarChart3 className="size-5" />,
+              title: "Análise de Rentabilidade",
+              description: "Descubra quais produtos/serviços geram mais lucro",
+            },
+          ],
+          cta: "Profissionalize seu negócio",
+          testimonial: {
+            text: "Aumentei meu faturamento em 40% com melhor controle financeiro!",
+            author: "Carlos Oliveira, MEI - Consultoria",
+          },
+        }
+
+      default:
+        return getContent()
     }
-  }, [userType])
-
-  const contentMap = {
-    individual: {
-      hero: {
-        title: "Organize suas finanças pessoais com facilidade",
-        subtitle: "Controle seus gastos, estabeleça metas e construa seu futuro financeiro",
-        cta: "Comece sua jornada financeira",
-      },
-      benefits: [
-        "Controle total dos seus gastos pessoais",
-        "Metas de economia personalizadas",
-        "Relatórios simples e claros",
-        "Alertas de vencimento de contas",
-      ],
-      testimonial: {
-        text: "Consegui economizar R$ 500 por mês só organizando meus gastos!",
-        author: "Maria Silva, 28 anos",
-      },
-    },
-    family: {
-      hero: {
-        title: "Una sua família em torno de objetivos financeiros",
-        subtitle: "Planeje juntos, economizem juntos e realizem sonhos em família",
-        cta: "Organize as finanças da família",
-      },
-      benefits: [
-        "Orçamento familiar compartilhado",
-        "Metas para toda a família",
-        "Controle de mesadas e gastos dos filhos",
-        "Planejamento para grandes objetivos",
-      ],
-      testimonial: {
-        text: "Finalmente conseguimos juntar dinheiro para a casa própria!",
-        author: "João e Ana Santos, casal com 2 filhos",
-      },
-    },
-    business: {
-      hero: {
-        title: "Simplifique a gestão financeira do seu negócio",
-        subtitle: "Controle fluxo de caixa, organize receitas e despesas empresariais",
-        cta: "Profissionalize suas finanças",
-      },
-      benefits: [
-        "Separação clara entre pessoa física e jurídica",
-        "Controle de fluxo de caixa empresarial",
-        "Relatórios para contador",
-        "Gestão de fornecedores e clientes",
-      ],
-      testimonial: {
-        text: "Meu negócio cresceu 40% depois que organizei as finanças!",
-        author: "Carlos Mendes, MEI",
-      },
-    },
   }
 
-  const content = contentMap[currentType as keyof typeof contentMap]
+  const content = getContent()
 
   return (
-    <div className="space-y-8">
-      {/* Hero Personalizado */}
-      <Card className="bg-gradient-to-r from-primary/10 to-primary/5 border-primary/20">
-        <CardContent className="p-8 text-center">
-          <Badge className="mb-4" variant="secondary">
-            {currentType === "individual" && "Pessoa Física"}
-            {currentType === "family" && "Família"}
-            {currentType === "business" && "MEI/Empresa"}
-          </Badge>
-          <h2 className="text-2xl font-bold mb-4">{content.hero.title}</h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">{content.hero.subtitle}</p>
-          <Button asChild className="rounded-full">
-            <Link href="/cliente">{content.hero.cta}</Link>
-          </Button>
-        </CardContent>
-      </Card>
-
-      {/* Benefícios Personalizados */}
-      <div className="grid md:grid-cols-2 gap-6">
-        <Card>
-          <CardContent className="p-6">
-            <h3 className="font-semibold mb-4">Benefícios para você:</h3>
-            <ul className="space-y-2">
-              {content.benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <div className="size-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                  <span className="text-sm">{benefit}</span>
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <h3 className="font-semibold mb-4">Depoimento:</h3>
-            <blockquote className="text-sm italic mb-3">"{content.testimonial.text}"</blockquote>
-            <cite className="text-xs text-muted-foreground">— {content.testimonial.author}</cite>
-          </CardContent>
-        </Card>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="space-y-8"
+    >
+      <div className="text-center space-y-4">
+        <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
+          Personalizado para você
+        </Badge>
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight">{content.title}</h2>
+        <p className="max-w-[600px] text-muted-foreground md:text-lg mx-auto">{content.description}</p>
       </div>
-    </div>
+
+      <div className="grid gap-6 md:grid-cols-3">
+        {content.features.map((feature, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+          >
+            <Card className="h-full border-border/40 bg-gradient-to-b from-background to-muted/10 backdrop-blur transition-all hover:shadow-md">
+              <CardContent className="p-6">
+                <div className="size-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="text-center space-y-6">
+        <Card className="max-w-2xl mx-auto border-primary/20 bg-primary/5">
+          <CardContent className="p-6">
+            <blockquote className="text-lg italic mb-4">"{content.testimonial.text}"</blockquote>
+            <cite className="text-sm text-muted-foreground">— {content.testimonial.author}</cite>
+          </CardContent>
+        </Card>
+
+        <Button size="lg" className="rounded-full">
+          {content.cta}
+        </Button>
+      </div>
+    </motion.div>
   )
 }

@@ -1,85 +1,95 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
 import { User, Users, Building2 } from "lucide-react"
+import { motion } from "framer-motion"
 
-interface UserTypeProps {
-  onTypeSelect?: (type: string) => void
-  className?: string
+interface UserTypeSelectorProps {
+  onTypeSelect: (type: string) => void
 }
 
-export default function UserTypeSelector({ onTypeSelect, className }: UserTypeProps) {
-  const [selectedType, setSelectedType] = useState<string | null>(null)
-
-  useEffect(() => {
-    // Verificar se já existe uma preferência salva
-    const savedType = localStorage.getItem("user-type")
-    if (savedType) {
-      setSelectedType(savedType)
-      onTypeSelect?.(savedType)
-    }
-  }, [onTypeSelect])
-
-  const handleTypeSelect = (type: string) => {
-    setSelectedType(type)
-    localStorage.setItem("user-type", type)
-    onTypeSelect?.(type)
-  }
+export default function UserTypeSelector({ onTypeSelect }: UserTypeSelectorProps) {
+  const [selectedType, setSelectedType] = useState("individual")
 
   const userTypes = [
     {
       id: "individual",
       title: "Pessoa Física",
       description: "Controle suas finanças pessoais",
-      icon: User,
-      color: "bg-blue-500/10 text-blue-600 border-blue-200",
+      icon: <User className="size-6" />,
+      color: "bg-blue-500",
     },
     {
       id: "family",
       title: "Família",
-      description: "Organize as finanças familiares",
-      icon: Users,
-      color: "bg-green-500/10 text-green-600 border-green-200",
+      description: "Gerencie o orçamento familiar",
+      icon: <Users className="size-6" />,
+      color: "bg-green-500",
     },
     {
       id: "business",
       title: "MEI/Empresa",
-      description: "Gerencie finanças empresariais",
-      icon: Building2,
-      color: "bg-purple-500/10 text-purple-600 border-purple-200",
+      description: "Organize as finanças do seu negócio",
+      icon: <Building2 className="size-6" />,
+      color: "bg-purple-500",
     },
   ]
 
+  const handleTypeSelect = (type: string) => {
+    setSelectedType(type)
+    onTypeSelect(type)
+  }
+
   return (
-    <div className={className}>
-      <div className="text-center mb-6">
-        <h3 className="text-lg font-semibold mb-2">Qual é o seu perfil?</h3>
-        <p className="text-sm text-muted-foreground">Personalize sua experiência escolhendo seu tipo de usuário</p>
-      </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col items-center justify-center space-y-4 text-center"
+    >
+      <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
+        Personalização
+      </Badge>
+      <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Qual é o seu perfil?</h2>
+      <p className="max-w-[600px] text-muted-foreground md:text-lg mb-8">
+        Selecione seu perfil para ver conteúdo personalizado e funcionalidades específicas para suas necessidades.
+      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {userTypes.map((type) => {
-          const Icon = type.icon
-          const isSelected = selectedType === type.id
-
-          return (
+      <div className="grid gap-6 md:grid-cols-3 w-full max-w-4xl">
+        {userTypes.map((type) => (
+          <motion.div key={type.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Card
-              key={type.id}
-              className={`cursor-pointer transition-all hover:shadow-md ${isSelected ? "ring-2 ring-primary" : ""}`}
+              className={`cursor-pointer transition-all duration-300 ${
+                selectedType === type.id
+                  ? "border-primary shadow-lg bg-primary/5"
+                  : "border-border/40 hover:border-primary/50"
+              }`}
               onClick={() => handleTypeSelect(type.id)}
             >
-              <CardContent className="p-4 text-center">
-                <div className={`size-12 rounded-full ${type.color} flex items-center justify-center mx-auto mb-3`}>
-                  <Icon className="size-6" />
+              <CardContent className="p-6 text-center">
+                <div
+                  className={`size-12 rounded-full ${type.color} flex items-center justify-center text-white mb-4 mx-auto`}
+                >
+                  {type.icon}
                 </div>
-                <h4 className="font-medium mb-1">{type.title}</h4>
-                <p className="text-xs text-muted-foreground">{type.description}</p>
+                <h3 className="text-xl font-bold mb-2">{type.title}</h3>
+                <p className="text-muted-foreground">{type.description}</p>
+                {selectedType === type.id && (
+                  <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="mt-4">
+                    <Button size="sm" className="rounded-full">
+                      Selecionado
+                    </Button>
+                  </motion.div>
+                )}
               </CardContent>
             </Card>
-          )
-        })}
+          </motion.div>
+        ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
